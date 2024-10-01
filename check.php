@@ -1,5 +1,5 @@
 <?php
-//jika belum login
+//jika belum lhkvhvkhvogin
 if(isset($_SESSION['admin'])){
 
 } else {
