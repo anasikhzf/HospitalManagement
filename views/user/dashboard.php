@@ -1,15 +1,9 @@
 <?php
-    require 'function.php';
-    require 'checkuser.php';
-
-    $error = "";
-    $sukses = "";
-
-    if (isset($_GET['op'])) {
-        $op = $_GET['op'];
-    } else {
-        $op = "";
-    }
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
+    header("Location: ../../login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +40,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-plus-circle"></i></div>
                             Beranda User
                         </a>
-                        <a class="nav-link" href="logout.php">
+                        <a class="nav-link" href="../../logout.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                             Logout
                         </a>

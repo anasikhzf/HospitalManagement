@@ -1,99 +1,64 @@
 <?php
-require 'function.php';
+require 'configs/database.php';
 
-// Handle registration
-if (isset($_POST['register'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $role = "user";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+    $role = 'user'; // Default role for new users
 
-    // Check if the username already exists
-    $cekdatabase = mysqli_query($koneksi, "SELECT * FROM login WHERE username='$username'");
-    $hitung = mysqli_num_rows($cekdatabase);
-
-    if ($hitung == 0) {
-        // Insert new user data into the database
-        $insert = mysqli_query($koneksi, "INSERT INTO login (username, password, role) VALUES ('$username', '$password', '$role')");
-
-        if ($insert) {
-            echo '<script>
-                        alert("Registration successful. Please login.");
-                        window.location.href = "login.php";
-                    </script>';
-        } else {
-            echo '<script>
-                        alert("Registration failed. Please try again.");
-                    </script>';
-        }
+    // Basic validation for username and password
+    if (empty($username) || empty($password)) {
+        $error = "Username dan password tidak boleh kosong.";
     } else {
-        echo '<script>
-                    alert("Username already exists. Please choose a different username.");
-                </script>';
+        // Cek apakah username sudah ada
+        $checkQuery = $db->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
+        $checkQuery->execute(['username' => $username]);
+        $userExists = $checkQuery->fetchColumn();
+
+        if ($userExists) {
+            $error = "Username sudah digunakan. Pilih username lain.";
+        } else {
+            // Masukkan data user baru
+            $insertQuery = $db->prepare("INSERT INTO users (username, password, role) VALUES (:username, :password, :role)");
+            if ($insertQuery->execute(['username' => $username, 'password' => $hashedPassword, 'role' => $role])) {
+                header("Location: login.php"); // Redirect to login page after successful registration
+                exit();
+            } else {
+                $error = "Gagal mendaftar. Coba lagi.";
+            }
+        }
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Register</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-</head>
-<body class="bg-primary">
-    <div class="bg-gambar">
-        <style>
-            body {
-                background-image: url('assets/img/rs.jpg');
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-        </style>
+<?php include 'components/head.php'; ?>
+<body>
+    <?php include 'components/header.php'; ?>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <form action="register.php" method="POST" class="w-50 border p-4 rounded shadow">
+            <h2 class="text-center mb-4">Register</h2>
+            <?php if (!empty($error)): ?>
+                <div class="alert alert-danger"><?php echo $error; ?></div>
+            <?php endif; ?>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+            <p class="mt-3 text-center">Sudah punya akun? <a href="login.php" class="text-primary">Masuk di sini</a></p>
+        </form>
     </div>
-    <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-            <main>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5">
-                            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-3">Register</h3>
-                                    <h5 class="text-center font-weight-light my-2">Buat akun anda</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="gambar">
-                                        <img src="assets/img/iconrs.png" alt="Image" height="256" width="256" style="display:block; margin:auto;">
-                                    </div>
-                                    <form method="post">
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" name="username" id="inputUsername" type="text" placeholder="Username" required />
-                                            <label for="inputUsername">Username</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" required />
-                                            <label for="inputPassword">Password</label>
-                                        </div>
-                                        <a href="login.php">Sudah punya akun?</a>
-                                        <div class="d-flex align-items-center justify-content-between mt-3 mb-0">
-                                            <button class="btn btn-primary" name="register">Register</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+
+    <?php include 'components/footer.php'; ?>
 </body>
 </html>

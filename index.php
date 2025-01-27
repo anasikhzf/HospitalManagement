@@ -1,198 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RS Semester4</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <style>
-      .home{
-        background-image: url(assets/img/gb_rs.jpg);
-        background-size: cover;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <input type="checkbox" name="" id="toggler" />
-      <label for="toggler" class="fas fa-bars"></label>
+<?php include 'components/head.php'; ?>
+<body>
+    <?php include 'components/header.php'; ?>
+    <!-- Home Section -->
+    <section class="home" id="home"></section>
 
-      <a href="#" class="logo">RS Telang Indah<span>.</span></a>
-
-      <nav class="navbar">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#product">Product</a>
-        <a href="#review">Review</a>
-      </nav>
-
-      <div class="icons">
-        <a href="login.php">Login</a>
-    </div>
-    </header>
-
-    <section class="home" id="home">
+    <!-- About Section -->
+    <section class="about py-5" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="assets/img/bg_about.jpg" alt="Logo Rumah Sakit">
+                </div>
+                <div class="col-md-6">
+                    <h3>Why choose RS Telang Indah?</h3>
+                    <p>
+                        Rumah Telang Indah memiliki reputasi yang sangat baik di komunitas medis dan dikenal dengan kualitas pelayanan kesehatan yang tinggi. Banyak testimoni positif dari pasien yang pernah berobat di sini.
+                    </p>
+                    <p>
+                        Rumah Sakit ini dilengkapi dengan fasilitas medis yang modern dan teknologi terkini, yang memastikan pasien mendapatkan perawatan yang terbaik dan terkini.
+                    </p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="row">
-        <img src="assets/img/logo_rs.jpg" alt="" />
-
-        <div class="content">
-          <h3>Why choose RS Telang Indah?</h3>
-          <p>
-            Rumah Telang Indah memiliki reputasi yang sangat baik di komunitas medis dan dikenal dengan kualitas pelayanan kesehatan yang tinggi. Banyak testimoni positif dari pasien yang pernah berobat di sini.
-            Rumah Sakit ini dilengkapi dengan fasilitas medis yang modern dan teknologi terkini, yang memastikan pasien mendapatkan perawatan yang terbaik dan terkini.
-            Serta memiliki tim dokter dan tenaga medis yang berpengalaman dan berkompeten di bidangnya masing-masing. Mereka terus mengikuti perkembangan terbaru di dunia medis untuk memberikan perawatan terbaik kepada pasien.
-            Rumah Sakit Telang Indah terkenal dengan pelayanan pasien yang ramah dan profesional. Staf medis dan non-medisnya sangat peduli terhadap kenyamanan dan kebutuhan pasien.
-          </p>
-          <a href="#" class="btn">learn more </a>
+    <!-- Products Section -->
+    <section class="products py-5 bg-light" id="product">
+        <div class="container">
+            <h1 class="text-center mb-4">Latest <span class="text-primary">Post</span></h1>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="assets/img/post-1.jpg" class="card-img-top" alt="Post">
+                        <div class="card-body">
+                            <h5 class="card-title">Inspiring stories during a global pandemic</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="assets/img/post-2.jpg" class="card-img-top" alt="Post">
+                        <div class="card-body">
+                            <h5 class="card-title">Inspiring stories during a global pandemic</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="assets/img/post-3.jpg" class="card-img-top" alt="Post">
+                        <div class="card-body">
+                            <h5 class="card-title">Inspiring stories during a global pandemic</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="assets/img/post-4.png" class="card-img-top" alt="Post">
+                        <div class="card-body">
+                            <h5 class="card-title">Inspiring stories during a global pandemic</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="assets/img/post-5.png" class="card-img-top" alt="Post">
+                        <div class="card-body">
+                            <h5 class="card-title">Inspiring stories during a global pandemic</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- Duplicate similar structure for other posts -->
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="products" id="product">
-      <h1 class="heading">Latest <span>Post</span></h1>
-      <div class="box-container">
-        <div class="box">
-          <div class="image">
-            <img src="assets/img/post-1.jpg" alt="" />
-          </div>
-          <div class="content">
-            <h3>Inspiring stories of person and family centered care during a global pandemic.</h3>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="assets/img/post-2.jpg" alt="" />
-          </div>
-          <div class="content">
-            <h3>Inspiring stories of person and family centered care during a global pandemic.</h3>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="assets/img/post-3.jpg" alt="" />
-          </div>
-          <div class="content">
-            <h3>Inspiring stories of person and family centered care during a global pandemic.</h3>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="assets/img/post-4.png" alt="" />
-          </div>
-          <div class="content">
-            <h3>Disease detection, check up in the laboratory</h3>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="assets/img/post-5.png" alt="" />
-          </div>
-          <div class="content">
-            <h3>Herbal medicines that are safe for consumption</h3>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="image">
-            <img src="assets/img/post-6.png" alt="" />
-          </div>
-          <div class="content">
-            <h3>Natural care for healthy facial skin</h3>
-          </div>
-        </div>
-
-    <section class="review" id="review">
-      <h1 class="heading"><span>Testimoni</span></h1>
-      <div class="box-container">
-        <div class="box">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>
-            Ayah saya baru saja menjalani operasi jantung di rumah sakit ini, dan saya tidak bisa cukup mengungkapkan betapa puasnya kami dengan layanan yang diberikan. Proses dari awal konsultasi hingga pasca operasi semuanya berjalan sangat lancar. Tim dokter bedahnya sangat berpengalaman dan memberikan penjelasan yang sangat jelas mengenai setiap tahap prosedur. Para perawat juga sangat perhatian dan selalu memastikan ayah saya merasa nyaman dan terawat dengan baik. Terima kasih rumah sakit ini telah merawat ayah saya dengan begitu baik
-          </p>
-          <div class="user">
-            <img src="assets/img/orang1.jpg" alt="" />
-            <div class="user-info">
-              <h3>Mikey Septian</h3>
-              <span>puas</span>
+    <!-- Reviews Section -->
+    <section class="review py-5" id="review">
+        <div class="container">
+            <h1 class="text-center mb-4"><span class="text-primary">Testimoni</span></h1>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>
+                            Ayah saya baru saja menjalani operasi jantung di rumah sakit ini, dan saya tidak bisa cukup mengungkapkan betapa puasnya kami dengan layanan yang diberikan.
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img src="assets/img/cust1.jpg" class="rounded-circle me-3" alt="User">
+                            <div>
+                                <h6 class="mb-0">Mikey Septian</h6>
+                                <small>puas</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>
+                            Ayah saya baru saja menjalani operasi jantung di rumah sakit ini, dan saya tidak bisa cukup mengungkapkan betapa puasnya kami dengan layanan yang diberikan.
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img src="assets/img/cust2.jpg" class="rounded-circle me-3" alt="User">
+                            <div>
+                                <h6 class="mb-0">Mikey Septian</h6>
+                                <small>puas</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Duplicate similar structure for other reviews -->
             </div>
-          </div>
         </div>
-
-        <div class="box">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>
-            Pengalaman melahirkan anak pertama saya di rumah sakit ini benar-benar luar biasa. Dari proses prenatal hingga persalinan dan perawatan setelah melahirkan, semua layanan diberikan dengan sangat baik. Dokter kandungan dan bidan yang menangani persalinan saya sangat sabar, mendukung, dan profesional. Fasilitas ruang bersalin dan kamar rawat inap sangat bersih dan nyaman. Saya merasa sangat didukung dan dirawat dengan baik selama proses yang menegangkan ini. Terima kasih banyak untuk pengalaman melahirkan yang tak terlupakan
-          </p>
-          <div class="user">
-            <img src="assets/img/orang3.jpeg" alt="" />
-            <div class="user-info">
-              <h3>Jennie Kim</h3>
-              <span>puas</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>
-            Saya didiagnosis dengan diabetes beberapa tahun yang lalu dan telah menjalani perawatan di rumah sakit ini sejak saat itu. Tim medis di sini selalu memberikan perawatan terbaik dan sangat memperhatikan setiap detail kebutuhan saya. Dokter dan perawatnya sangat profesional, ramah, dan selalu siap membantu kapan pun saya membutuhkannya. Alat-alat medisnya pun sangat modern dan canggih. Saya sangat bersyukur mendapatkan perawatan yang luar biasa di rumah sakit ini
-          </p>
-          <div class="user">
-            <img src="assets/img/cust3.jpg" alt="" />
-            <div class="user-info">
-              <h3>Kim Taeri</h3>
-              <span>puas</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p>
-            Saya mengalami kecelakaan lalu lintas dan dibawa ke unit gawat darurat di rumah sakit ini. Saya sangat terkesan dengan respons cepat dan profesionalisme tim medis di UGD. Mereka segera menangani luka-luka saya dan memberikan penanganan yang sangat baik. Dokter dan perawatnya sangat kompeten dan penuh perhatian, memastikan saya mendapatkan perawatan yang diperlukan secepat mungkin. Ruang UGD juga sangat lengkap dengan peralatan medis yang diperlukan. Saya merasa sangat aman dan terawat di tangan mereka
-          </p>
-          <div class="user">
-            <img src="assets/img/cust2.jpg" alt="" />
-            <div class="user-info">
-              <h3>Nadine Anggraini</h3>
-              <span>puas</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
-  </body>
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <?php include 'components/footer.php'; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
